@@ -1,7 +1,7 @@
 'use client';
 import Link from 'next/link';
 import CreativeLogo from './CreativeLogo';
-import WritingStepsDemo from './WritingStepsDemo';
+import WritingStepsGif from './WritingStepsGif';
 
 export default function LandingHero() {
   return (
@@ -38,9 +38,9 @@ export default function LandingHero() {
               데모 모드: admin / admin 로그인 가능 (로컬 저장)
             </div>
           </div>
-          {/* 우측 비주얼: 글쓰기 4단계 데모 (향후 GIF로 교체 가능) */}
+          {/* 우측 비주얼: 실제 GIF 표시 */}
           <div className="flex-1 flex items-center justify-center">
-            <WritingStepsDemo />
+            <WritingStepsGif />
           </div>
         </div>
       </div>
