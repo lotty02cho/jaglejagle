@@ -123,3 +123,18 @@ git push -u origin main
 - 비밀번호: admin
 
 `/app/login` 페이지에서 데모 아이디/비밀번호를 입력한 뒤 "데모 로그인" 버튼을 눌러 로그인하세요.
+
+## 로그인 후 라우팅 규칙 (데모)
+- 로그인 성공 시, 로컬 저장된 글(localStorage key: `posts`)이 하나라도 있으면 `/posts`로 이동합니다.
+- 없으면 자동 글쓰기 시작 페이지(`/write`, 3-1 목적 선택)로 이동합니다.
+
+## 데이터 저장 방식 (데모)
+- StepPreview에서 "html 만들기"를 누르면 HTML이 클립보드에 복사되고, 입력 내용이 로컬스토리지 `posts` 배열에 저장된 뒤 `/posts`로 이동합니다.
+- 초기화하려면 브라우저 콘솔에서 `localStorage.clear()`를 실행하거나 Application 탭에서 `posts`를 지우세요.
+
+## 데모 인증 플래그
+- 실제 Supabase 설정 없이도 데모 인증을 강제로 켜려면 `.env.local`에 아래를 추가하세요.
+```
+NEXT_PUBLIC_USE_DEMO_AUTH=true
+```
+- 이 플래그가 true면 환경변수 유무와 상관없이 데모 인증(mock)을 사용합니다.
