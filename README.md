@@ -114,3 +114,12 @@ git push -u origin main
 참고:
 - `setx`로 PATH를 수정한 뒤에는 반드시 새로운 cmd 창을 열어야 변경사항이 반영됩니다.
 - GitHub에 2단계 인증이 켜져 있다면 HTTPS 푸시 시 PAT(Personal Access Token)이 필요합니다.
+
+## 데모 계정
+
+개발 편의를 위해 Supabase 환경변수가 설정되지 않은 경우 데모 계정으로 로그인할 수 있습니다.
+
+- 아이디: admin
+- 비밀번호: admin
+
+`/app/login` 페이지에서 데모 아이디/비밀번호를 입력한 뒤 "데모 로그인" 버튼을 눌러 로그인하세요.

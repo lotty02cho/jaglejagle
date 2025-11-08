@@ -1,5 +1,7 @@
 'use client';
+import { useRouter } from 'next/navigation';
 export default function StepPreview({ formData, setFormData, onEditStart }) {
+  const router = useRouter();
   const html = `
     <div>
       <h2>맛집리뷰</h2>
@@ -15,8 +17,38 @@ export default function StepPreview({ formData, setFormData, onEditStart }) {
     </div>
   `;
   const copyHtml = () => {
-    navigator.clipboard.writeText(html);
-    alert('HTML이 복사되었습니다!');
+    try {
+      navigator.clipboard.writeText(html);
+    } catch (e) {}
+    // 로컬 저장
+    try {
+      const now = new Date().toISOString();
+      const post = {
+        id: `${Date.now()}`,
+        title: formData?.menu ? `${formData.menu} 맛집리뷰` : '맛집리뷰',
+        date: formData?.date || now.slice(0, 10),
+        location: formData?.location || '',
+        menu: formData?.menu || '',
+        price: formData?.price || '',
+        comment: formData?.comment || '',
+        body: formData?.body || '',
+        ratings: {
+          taste: formData?.taste || '',
+          service: formData?.service || '',
+          mood: formData?.mood || '',
+          revisit: formData?.revisit || '',
+        },
+        html,
+        createdAt: now,
+      };
+      const key = 'posts';
+      const prev = typeof window !== 'undefined' ? localStorage.getItem(key) : null;
+      const list = prev ? JSON.parse(prev) : [];
+      list.unshift(post);
+      localStorage.setItem(key, JSON.stringify(list));
+    } catch (e) {}
+    alert('HTML이 복사되고, 목록에 저장되었습니다.');
+    router.push('/posts');
   };
   return (
     <section>
