@@ -14,13 +14,25 @@ export default function StepPreview({ formData, setFormData, onEditStart }) {
       </ul>
       <p>본문: ${formData.body||''}</p>
       <p>맛: ${formData.taste||''}, 서비스: ${formData.service||''}, 분위기: ${formData.mood||''}, 재방문의사: ${formData.revisit||''}</p>
+      ${formData.imagePreviewUrl ? `<img src="${formData.imagePreviewUrl}" alt="thumb" />` : ''}
     </div>
   `;
-  const copyHtml = () => {
-    try {
-      navigator.clipboard.writeText(html);
-    } catch (e) {}
-    // 로컬 저장
+
+  const fileToDataUrl = (file: File): Promise<string> => new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(reader.result as string);
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+
+  const copyHtml = async () => {
+    try { navigator.clipboard.writeText(html); } catch (e) {}
+    let thumbnailDataUrl: string | undefined = undefined;
+    if (formData.image instanceof File) {
+      try { thumbnailDataUrl = await fileToDataUrl(formData.image); } catch (e) {}
+    } else if (typeof formData.imagePreviewUrl === 'string') {
+      thumbnailDataUrl = formData.imagePreviewUrl; // 이미 objectURL일 수도 있지만 목록 용도로 사용
+    }
     try {
       const now = new Date().toISOString();
       const post = {
@@ -39,6 +51,7 @@ export default function StepPreview({ formData, setFormData, onEditStart }) {
           revisit: formData?.revisit || '',
         },
         html,
+        thumbnail: thumbnailDataUrl,
         createdAt: now,
       };
       const key = 'posts';

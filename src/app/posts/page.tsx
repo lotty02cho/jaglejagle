@@ -27,12 +27,20 @@ export default function PostsPage() {
       ) : (
         <div className="flex flex-col gap-4">
           {posts.map((post) => (
-            <div key={post.id} className="border rounded p-4 bg-white shadow">
-              <div className="font-bold text-lg">{post.title}</div>
-              <div className="text-sm text-gray-500">{post.date} | {post.location}</div>
-              <div className="mt-2">{post.menu} / {post.price}</div>
-              <div className="mt-1 text-orange-600">{post.comment}</div>
-            </div>
+            <a key={post.id} href={`/posts/${post.id}`} className="block border rounded p-4 bg-white shadow hover:shadow-md transition">
+              <div className="flex items-center gap-4">
+                {post.thumbnail ? (
+                  <img src={post.thumbnail} alt={post.title} className="h-16 w-16 object-cover rounded border" />
+                ) : (
+                  <div className="h-16 w-16 flex items-center justify-center bg-gray-100 text-gray-400 text-xs rounded border">No Img</div>
+                )}
+                <div className="flex-1">
+                  <div className="font-bold text-lg line-clamp-1">{post.title}</div>
+                  <div className="text-sm text-gray-500">{post.date} | {post.location}</div>
+                  <div className="mt-1 text-orange-600 text-sm line-clamp-1">{post.comment}</div>
+                </div>
+              </div>
+            </a>
           ))}
         </div>
       )}
