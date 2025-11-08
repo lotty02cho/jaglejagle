@@ -68,8 +68,8 @@ export default function StepPreview({ formData, setFormData, onEditStart }) {
       <h2 className="text-xl font-bold mb-4">미리보기</h2>
       <div className="border p-4 rounded bg-gray-50" dangerouslySetInnerHTML={{__html: html}} />
       <div className="flex gap-4 mt-4">
-        <button className="px-4 py-2 bg-gray-200 rounded" onClick={()=>{ setFormData({}); onEditStart && onEditStart(); }}>수정하기</button>
-        <button className="px-4 py-2 bg-orange-500 text-white rounded" onClick={copyHtml}>html 만들기</button>
+        <button className="btn-secondary" onClick={()=>{ setFormData({}); onEditStart && onEditStart(); }}>수정하기</button>
+        <button className="btn-primary" onClick={copyHtml}>html 만들기</button>
       </div>
     </section>
   );

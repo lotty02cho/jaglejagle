@@ -68,23 +68,22 @@ export default function SocialLogin() {
   return (
     <div className="flex flex-col gap-4">
       {(!isConfigured || IS_DEMO_AUTH) && (
-        <p className="text-sm text-orange-600">현재 데모 인증 모드입니다. admin / admin 으로 로그인할 수 있습니다.</p>
+        <p className="text-sm text-blue-600">현재 데모 인증 모드입니다. admin / admin 으로 로그인할 수 있습니다.</p>
       )}
 
       <div className="flex flex-col gap-2">
-        <button disabled={( !isConfigured && !IS_DEMO_AUTH) || loading} onClick={() => handleLogin('google')} className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50">Google로 로그인</button>
-        <button disabled={( !isConfigured && !IS_DEMO_AUTH) || loading} onClick={() => handleLogin('kakao')} className="px-4 py-2 bg-yellow-400 text-black rounded disabled:opacity-50">Kakao로 로그인</button>
-        <button disabled={( !isConfigured && !IS_DEMO_AUTH) || loading} onClick={() => handleLogin('naver')} className="px-4 py-2 bg-green-500 text-white rounded disabled:opacity-50">Naver로 로그인</button>
+        <button disabled={( !isConfigured && !IS_DEMO_AUTH) || loading} onClick={() => handleLogin('google')} className="btn-primary disabled:opacity-50">Google로 로그인</button>
+        <button disabled={( !isConfigured && !IS_DEMO_AUTH) || loading} onClick={() => handleLogin('kakao')} className="px-4 py-2 rounded bg-yellow-400 text-black disabled:opacity-50">Kakao로 로그인</button>
+        <button disabled={( !isConfigured && !IS_DEMO_AUTH) || loading} onClick={() => handleLogin('naver')} className="px-4 py-2 rounded bg-green-500 text-white disabled:opacity-50">Naver로 로그인</button>
       </div>
 
-      {/* 데모 로그인 섹션 */}
       <div className="border rounded p-4 mt-2">
         <label className="text-sm">데모 아이디</label>
         <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="admin" className="border px-2 py-1 rounded w-full mt-1" />
         <label className="text-sm mt-2">데모 비밀번호</label>
         <input value={password} onChange={(e) => setPassword(e.target.value)} placeholder="admin" type="password" className="border px-2 py-1 rounded w-full mt-1" />
         <div className="flex gap-2 mt-3">
-          <button onClick={handleDemoLogin} disabled={loading} className="px-4 py-2 bg-indigo-600 text-white rounded">데모 로그인</button>
+          <button onClick={handleDemoLogin} disabled={loading} className="btn-primary">데모 로그인</button>
         </div>
         <p className="text-xs text-gray-500 mt-2">주의: 정확히 "admin" (소문자) / 비밀번호 "admin" 입력</p>
       </div>

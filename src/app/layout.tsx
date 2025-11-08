@@ -13,6 +13,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="ko">
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700;800&display=swap" rel="stylesheet" />
+      </head>
       <body className="bg-gradient-to-b from-blue-50 to-white min-h-screen text-gray-900">
         <ClientHeader />
         <div className="pt-16">{children}</div>

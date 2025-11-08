@@ -31,7 +31,7 @@ export default function PostsPage() {
           아직 작성한 글이 없어요.
           <div className="mt-4">
             <a href="/write">
-              <button className="px-6 py-3 rounded-lg bg-orange-500 text-white font-bold shadow hover:bg-orange-600 transition">지금 쓰기</button>
+              <button className="btn-primary">지금 쓰기</button>
             </a>
           </div>
         </div>
@@ -48,7 +48,7 @@ export default function PostsPage() {
                 <a href={`/posts/${post.id}`} className="flex-1 min-w-0">
                   <div className="font-bold text-lg line-clamp-1">{post.title}</div>
                   <div className="text-sm text-gray-500">{post.date} | {post.location}</div>
-                  <div className="mt-1 text-orange-600 text-sm line-clamp-1">{post.comment}</div>
+                  <div className="mt-1 text-blue-600 text-sm line-clamp-1">{post.comment}</div>
                 </a>
                 <button
                   className="ml-2 p-2 rounded hover:bg-red-50 active:bg-red-100"
@@ -68,7 +68,7 @@ export default function PostsPage() {
         </div>
       )}
       <a href="/write">
-        <button className="mt-8 px-6 py-3 rounded-lg bg-orange-500 text-white font-bold shadow hover:bg-orange-600 transition">새 글쓰기</button>
+        <button className="mt-8 btn-primary">새 글쓰기</button>
       </a>
     </main>
   );

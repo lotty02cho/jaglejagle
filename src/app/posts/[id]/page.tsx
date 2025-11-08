@@ -1,6 +1,5 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { notFound } from 'next/navigation';
 
 export default function PostDetailPage({ params }: { params: { id: string } }) {
   const { id } = params;
@@ -28,7 +27,7 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
 
   return (
     <main className="max-w-md mx-auto p-4 min-h-screen">
-      <a href="/posts"><button className="mb-4 px-4 py-2 rounded bg-gray-200">← 목록으로</button></a>
+      <a href="/posts"><button className="mb-4 btn-secondary">← 목록으로</button></a>
       <h1 className="text-2xl font-bold mb-2">{post.title}</h1>
       <div className="text-sm text-gray-500 mb-4">{post.date} | {post.location}</div>
       {post.thumbnail && (
@@ -36,10 +35,9 @@ export default function PostDetailPage({ params }: { params: { id: string } }) {
       )}
       <div className="prose prose-sm max-w-none border p-4 rounded bg-white" dangerouslySetInnerHTML={{ __html: post.html }} />
       <div className="mt-6 flex gap-2">
-        <button className="px-4 py-2 rounded bg-orange-500 text-white" onClick={() => { navigator.clipboard.writeText(post.html); alert('HTML이 복사되었습니다.'); }}>HTML 복사</button>
-        <a href="/write"><button className="px-4 py-2 rounded bg-blue-500 text-white">새 글쓰기</button></a>
+        <button className="btn-primary" onClick={() => { navigator.clipboard.writeText(post.html); alert('HTML이 복사되었습니다.'); }}>HTML 복사</button>
+        <a href="/write"><button className="btn-primary">새 글쓰기</button></a>
       </div>
     </main>
   );
 }
-

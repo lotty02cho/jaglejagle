@@ -15,7 +15,7 @@ export default function StepPurpose({ formData, setFormData }) {
           <button
             key={p.key}
             disabled={!p.active}
-            className={`p-4 rounded shadow ${formData.purpose === p.key ? 'bg-orange-500 text-white' : 'bg-gray-100'} ${!p.active ? 'opacity-50' : ''}`}
+            className={`p-4 rounded shadow ${formData.purpose === p.key ? 'bg-blue-600 text-white' : 'bg-gray-100'} ${!p.active ? 'opacity-50' : ''}`}
             onClick={() => setFormData({ ...formData, purpose: p.key })}
           >{p.label}</button>
         ))}
